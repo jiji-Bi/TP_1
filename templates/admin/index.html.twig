@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Agences</h1>
+<a href="{{ path('agence_ajouter') }}" >Ajouter</a>
+<table>
+   <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Telagence</th>
+            <th>AdresseVille</th>
+            <th>Actions</th>
+        </tr>
+
+    </thead>
+        <tr>
+            <td>{{ Agence.Id }}</td>
+            <td>{{ Agence.Nom }}</td>
+            <td>{{ Agence.Telagence }}</td>
+            <td>{{ Agence.Adresseville }}</td>
+            <td> <a href="{{ path('agence_voir', {'id': Agence.Id}) }}" >Voir</a> <a href="{{ path('agence_modifier', {'id': Agence.Id}) }}" >Modifier</a>
+            <a href="{{ path('agence_supprimer', {'id': Agence.Id}) }}" >Supprimer</a> </td>
+            </td>
+        </tr>
+</table class>
+<h1>Voitures</h1>
+<a href="{{ path('ajouter_voiture') }}" >Ajouter</a>
+<table>
+   <thead>
+        <tr>
+            <th>#</th>
+            <th>Marque</th>
+            <th>Couleur</th>
+            <th>Description</th>
+            <th>Nombre de Place</th>
+            <th>Nom agence</th>
+            <th>Actions</th>
+        </tr>
+
+    </thead>
+        <tr>
+            <td>{{ Voitures.Id }}</td>
+            <td>{{ Voitures.Marque }}</td>
+            <td>{{ Voitures.Couleur }}</td>
+            <td>{{ Voitures.Description }}</td>
+            <td>{{ Voitures.NombredePlace }}</td>
+            <td>{{ Voitures.NomAgence }}</td>
+            <td> <a href="{{ path('voiture_consulter', {'id': Agence.Id}) }}" >Voir</a> <a href="{{ path('voiture_modifier', {'id': Agence.Id}) }}" >Modifier</a>
+            <a href="{{ path('voiture_supprimer', {'id': Agence.Id}) }}" >Supprimer</a> </td>
+            </td>
+        </tr>
+</table>
+{% endblock %}
+
