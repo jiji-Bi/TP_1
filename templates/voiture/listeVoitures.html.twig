@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block title %} Liste des Voitures {% endblock %}
+
+{% block body %}
+ {% if voitures %}
+    <table id="voitures" class="table table-bordered" style="margin-top: 60px;" >
+      <thead>
+        <tr>
+          <th>Matricule</th>
+          <th>Marque</th>
+          <th>Couleur</th>
+          <th>Type de carburant </th>
+          <th>Description</th>
+          <th>Date de mise en circulation</th>
+          <th>Disponibilité</th>
+          <th>Nom de l'agence</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for voiture in voitures %}
+          <tr>
+            <td>{{ voiture.matricule }}</td>
+            <td>{{ voiture.marque }}</td>
+            <td>{{ voiture.couleur }}</td>
+            <td>{{ voiture.carburant }}</td>
+            <td>{{ voiture.description }}</td>
+            <td>{{ voiture.dateenmiseencirculation|date }}</td>
+            <td>{{ voiture.disponibilite }}</td>
+            <td>{{ voiture.agence.getNom() }}</td>
+           <td>
+             <a href="/voiture/{{ voiture.id }}" class="btn btn-primary">Détails</a>
+              <a href="/voiture/modifier/{{ voiture.id }}" class="btn btn-success">Modifier</a>
+              <a href="/voiture/supprimer/{{ voiture.id }}" class="btn btn-danger" onclick="return confirm('Etes-vous sûr de le supprimer ?');">Supprimer</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Aucune voitures</p>
+  {% endif %}
+{% endblock %}
